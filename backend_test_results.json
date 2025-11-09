@@ -1,0 +1,156 @@
+{
+  "timestamp": "2025-11-09T17:58:46.017893",
+  "total_tests": 10,
+  "passed_tests": 10,
+  "success_rate": 1.0,
+  "test_results": [
+    {
+      "test": "Basic API Connectivity",
+      "success": true,
+      "details": "Expected 'Hello World', got: Hello World",
+      "response_data": {
+        "message": "Hello World"
+      }
+    },
+    {
+      "test": "Session Start",
+      "success": true,
+      "details": "Session ID: 70286c0c-0151-4fb7-840a-515d41bf45c7, Mode: normal",
+      "response_data": {
+        "id": "70286c0c-0151-4fb7-840a-515d41bf45c7",
+        "mode": "normal",
+        "allowed_scopes": [
+          "apps.open",
+          "system.read",
+          "files.sandbox_rw",
+          "browser.basic"
+        ],
+        "expires_in_minutes": 60,
+        "created_at": "2025-11-09T17:58:40.216118+00:00"
+      }
+    },
+    {
+      "test": "Simple Plan Execution (Time)",
+      "success": true,
+      "details": "Auto results: [{'action_id': '1c3b027c-053f-410b-813a-c6188643812a', 'success': True, 'result': {'now_iso': '2025-11-09T17:58:40.255538+00:00'}, 'error': None}]",
+      "response_data": {
+        "actions": [
+          {
+            "tool": "system.time",
+            "args": {},
+            "id": "1c3b027c-053f-410b-813a-c6188643812a",
+            "need_approval": false,
+            "reason_brief": "proposed by rules",
+            "risk": "low"
+          }
+        ],
+        "auto_results": [
+          {
+            "action_id": "1c3b027c-053f-410b-813a-c6188643812a",
+            "success": true,
+            "result": {
+              "now_iso": "2025-11-09T17:58:40.255538+00:00"
+            },
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "test": "File Write Approval Flow",
+      "success": true,
+      "details": "File write approved successfully. Action ID: 41976a86-02e7-44b2-b4d2-7556789953b2",
+      "response_data": {
+        "action_id": "41976a86-02e7-44b2-b4d2-7556789953b2",
+        "success": true,
+        "result": {
+          "bytes_written": 19
+        },
+        "error": null
+      }
+    },
+    {
+      "test": "File Read Approval Flow",
+      "success": true,
+      "details": "File read approved successfully. Action ID: 928deb73-1b69-4a66-a8e1-2081f58c02b2",
+      "response_data": {
+        "action_id": "928deb73-1b69-4a66-a8e1-2081f58c02b2",
+        "success": true,
+        "result": {
+          "text": "hello from guardian"
+        },
+        "error": null
+      }
+    },
+    {
+      "test": "File Delete Approval Flow",
+      "success": true,
+      "details": "File delete approved successfully. Action ID: be66ded7-9fce-41e3-bf0d-d338182b9ba9",
+      "response_data": {
+        "action_id": "be66ded7-9fce-41e3-bf0d-d338182b9ba9",
+        "success": true,
+        "result": {
+          "deleted": true
+        },
+        "error": null
+      }
+    },
+    {
+      "test": "Copy/Move Operations",
+      "success": true,
+      "details": "File operations completed. List result: {'actions': [{'tool': 'files.list', 'args': {'path': '/tmp/guardian-e2e'}, 'id': '4c436bcd-b2d2-4566-9bba-38d5de6637dd', 'need_approval': False, 'reason_brief': 'proposed by rules', 'risk': 'low'}], 'auto_results': [{'action_id': '4c436bcd-b2d2-4566-9bba-38d5de6637dd', 'success': True, 'result': {'entries': ['a.txt', 'c.txt']}, 'error': None}]}",
+      "response_data": {
+        "actions": [
+          {
+            "tool": "files.list",
+            "args": {
+              "path": "/tmp/guardian-e2e"
+            },
+            "id": "4c436bcd-b2d2-4566-9bba-38d5de6637dd",
+            "need_approval": false,
+            "reason_brief": "proposed by rules",
+            "risk": "low"
+          }
+        ],
+        "auto_results": [
+          {
+            "action_id": "4c436bcd-b2d2-4566-9bba-38d5de6637dd",
+            "success": true,
+            "result": {
+              "entries": [
+                "a.txt",
+                "c.txt"
+              ]
+            },
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "test": "Privilege Request Flow",
+      "success": true,
+      "details": "Privilege flow completed. New root: {'root': '/tmp/guardian-e2e'}",
+      "response_data": {
+        "root": "/tmp/guardian-e2e"
+      }
+    },
+    {
+      "test": "Logs Endpoint",
+      "success": true,
+      "details": "Retrieved 8 log entries",
+      "response_data": {
+        "log_count": 8
+      }
+    },
+    {
+      "test": "Settings Root GET",
+      "success": true,
+      "details": "Current root: /tmp/guardian-e2e, First run: False",
+      "response_data": {
+        "root": "/tmp/guardian-e2e",
+        "first_run": false
+      }
+    }
+  ]
+}
