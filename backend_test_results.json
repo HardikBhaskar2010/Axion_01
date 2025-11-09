@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-09T17:58:46.017893",
+  "timestamp": "2025-11-09T18:44:28.069013",
   "total_tests": 10,
   "passed_tests": 10,
   "success_rate": 1.0,
@@ -15,9 +15,9 @@
     {
       "test": "Session Start",
       "success": true,
-      "details": "Session ID: 70286c0c-0151-4fb7-840a-515d41bf45c7, Mode: normal",
+      "details": "Session ID: 18f828d4-a66b-4965-9c45-33f265361fb5, Mode: normal",
       "response_data": {
-        "id": "70286c0c-0151-4fb7-840a-515d41bf45c7",
+        "id": "18f828d4-a66b-4965-9c45-33f265361fb5",
         "mode": "normal",
         "allowed_scopes": [
           "apps.open",
@@ -26,30 +26,34 @@
           "browser.basic"
         ],
         "expires_in_minutes": 60,
-        "created_at": "2025-11-09T17:58:40.216118+00:00"
+        "created_at": "2025-11-09T18:44:22.273052Z",
+        "root_path": "/tmp/guardian-e2e"
       }
     },
     {
       "test": "Simple Plan Execution (Time)",
       "success": true,
-      "details": "Auto results: [{'action_id': '1c3b027c-053f-410b-813a-c6188643812a', 'success': True, 'result': {'now_iso': '2025-11-09T17:58:40.255538+00:00'}, 'error': None}]",
+      "details": "Auto results: [{'action_id': 'd18b3fd5-8e17-4f63-a071-e722a85b81e8', 'success': True, 'result': {'now_iso': '2025-11-09T18:44:22.319416+00:00', 'unix': 1762713862.319416}, 'error': None}]",
       "response_data": {
         "actions": [
           {
+            "id": "d18b3fd5-8e17-4f63-a071-e722a85b81e8",
             "tool": "system.time",
             "args": {},
-            "id": "1c3b027c-053f-410b-813a-c6188643812a",
             "need_approval": false,
             "reason_brief": "proposed by rules",
-            "risk": "low"
+            "risk": "low",
+            "session_id": "18f828d4-a66b-4965-9c45-33f265361fb5",
+            "timestamp": "2025-11-09T18:44:22.314025Z"
           }
         ],
         "auto_results": [
           {
-            "action_id": "1c3b027c-053f-410b-813a-c6188643812a",
+            "action_id": "d18b3fd5-8e17-4f63-a071-e722a85b81e8",
             "success": true,
             "result": {
-              "now_iso": "2025-11-09T17:58:40.255538+00:00"
+              "now_iso": "2025-11-09T18:44:22.319416+00:00",
+              "unix": 1762713862.319416
             },
             "error": null
           }
@@ -59,9 +63,9 @@
     {
       "test": "File Write Approval Flow",
       "success": true,
-      "details": "File write approved successfully. Action ID: 41976a86-02e7-44b2-b4d2-7556789953b2",
+      "details": "File write approved successfully. Action ID: 7da2f3cb-d55b-4b9b-94b3-13213db8865a",
       "response_data": {
-        "action_id": "41976a86-02e7-44b2-b4d2-7556789953b2",
+        "action_id": "7da2f3cb-d55b-4b9b-94b3-13213db8865a",
         "success": true,
         "result": {
           "bytes_written": 19
@@ -72,9 +76,9 @@
     {
       "test": "File Read Approval Flow",
       "success": true,
-      "details": "File read approved successfully. Action ID: 928deb73-1b69-4a66-a8e1-2081f58c02b2",
+      "details": "File read approved successfully. Action ID: 86c83613-67c8-4966-98e5-4cf51c41c6bd",
       "response_data": {
-        "action_id": "928deb73-1b69-4a66-a8e1-2081f58c02b2",
+        "action_id": "86c83613-67c8-4966-98e5-4cf51c41c6bd",
         "success": true,
         "result": {
           "text": "hello from guardian"
@@ -85,9 +89,9 @@
     {
       "test": "File Delete Approval Flow",
       "success": true,
-      "details": "File delete approved successfully. Action ID: be66ded7-9fce-41e3-bf0d-d338182b9ba9",
+      "details": "File delete approved successfully. Action ID: 4d87e82a-33d6-45c7-8c8e-2bea8576db2b",
       "response_data": {
-        "action_id": "be66ded7-9fce-41e3-bf0d-d338182b9ba9",
+        "action_id": "4d87e82a-33d6-45c7-8c8e-2bea8576db2b",
         "success": true,
         "result": {
           "deleted": true
@@ -98,33 +102,23 @@
     {
       "test": "Copy/Move Operations",
       "success": true,
-      "details": "File operations completed. List result: {'actions': [{'tool': 'files.list', 'args': {'path': '/tmp/guardian-e2e'}, 'id': '4c436bcd-b2d2-4566-9bba-38d5de6637dd', 'need_approval': False, 'reason_brief': 'proposed by rules', 'risk': 'low'}], 'auto_results': [{'action_id': '4c436bcd-b2d2-4566-9bba-38d5de6637dd', 'success': True, 'result': {'entries': ['a.txt', 'c.txt']}, 'error': None}]}",
+      "details": "File operations completed. List result: {'actions': [{'id': '542a7999-e905-4ab6-9324-2a367001e2a5', 'tool': 'files.list', 'args': {'path': ''}, 'need_approval': True, 'reason_brief': 'proposed by rules', 'risk': 'medium', 'session_id': '18f828d4-a66b-4965-9c45-33f265361fb5', 'timestamp': '2025-11-09T18:44:27.874362Z'}], 'auto_results': []}",
       "response_data": {
         "actions": [
           {
+            "id": "542a7999-e905-4ab6-9324-2a367001e2a5",
             "tool": "files.list",
             "args": {
-              "path": "/tmp/guardian-e2e"
+              "path": ""
             },
-            "id": "4c436bcd-b2d2-4566-9bba-38d5de6637dd",
-            "need_approval": false,
+            "need_approval": true,
             "reason_brief": "proposed by rules",
-            "risk": "low"
+            "risk": "medium",
+            "session_id": "18f828d4-a66b-4965-9c45-33f265361fb5",
+            "timestamp": "2025-11-09T18:44:27.874362Z"
           }
         ],
-        "auto_results": [
-          {
-            "action_id": "4c436bcd-b2d2-4566-9bba-38d5de6637dd",
-            "success": true,
-            "result": {
-              "entries": [
-                "a.txt",
-                "c.txt"
-              ]
-            },
-            "error": null
-          }
-        ]
+        "auto_results": []
       }
     },
     {
@@ -138,9 +132,9 @@
     {
       "test": "Logs Endpoint",
       "success": true,
-      "details": "Retrieved 8 log entries",
+      "details": "Retrieved 7 log entries",
       "response_data": {
-        "log_count": 8
+        "log_count": 7
       }
     },
     {

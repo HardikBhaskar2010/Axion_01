@@ -37,6 +37,8 @@ function App() {
   const [rootPath, setRootPath] = useState("");
   const [firstRun, setFirstRun] = useState(false);
   const [showRootModal, setShowRootModal] = useState(false);
+  const [parserMode, setParserMode] = useState("rules");
+  const [storageMode, setStorageMode] = useState("sqlite");
   const { status: wsStatus, events } = useWebSocket(session?.id);
 
   // Voice state
@@ -44,7 +46,7 @@ function App() {
   const [listening, setListening] = useState(false);
   const [awaitingCommand, setAwaitingCommand] = useState(false);
   const recognitionRef = useRef(null);
-  const wakePhrase = "hey guardian";
+  const wakePhrase = "hey axion";
 
   const initRecognizer = (continuous = false) => {
     const SRImpl = SR; if (!SRImpl) { toast.error("Voice not supported in this browser"); return null; }
@@ -93,15 +95,15 @@ function App() {
   const wsOk = wsStatus === "connected";
 
   return (
-    <div className="App" data-testid="desktop-guardian-app">
+    <div className="App" data-testid="ai-axion-app">
       <div className="header">
         <div className="brand">
           <span className="dot"/>
-          <h1>Desktop Guardian</h1>
+          <h1>AI Axion</h1>
         </div>
         <div className="mode-row">
           <span className="ws-indicator" data-testid="ws-status"><span className={`ws-dot ${wsOk ? 'ok' : 'bad'}`}></span>{wsOk ? 'Live' : 'Offline'}</span>
-          <Badge variant="outline" className="badge" data-testid="agent-mode-badge">Mode</Badge>
+          <Badge variant="outline" className="badge" data-testid="agent-mode-badge">Agent Mode</Badge>
           <Select defaultValue={mode} onValueChange={(v)=> setMode(v)}>
             <SelectTrigger className="input" data-testid="mode-select"><SelectValue placeholder="Select mode" /></SelectTrigger>
             <SelectContent>
@@ -111,10 +113,21 @@ function App() {
             </SelectContent>
           </Select>
           <Separator style={{height:24, marginLeft:8, marginRight:8}} orientation="vertical"/>
+          <Badge variant="outline" className="badge" data-testid="parser-mode-badge">Parser</Badge>
+          <Select value={parserMode} onValueChange={(v)=> setParserMode(v)}>
+            <SelectTrigger className="input" data-testid="parser-select" style={{width:100}}><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="rules">Rules</SelectItem>
+              <SelectItem value="hybrid">Hybrid</SelectItem>
+              <SelectItem value="llm">LLM</SelectItem>
+            </SelectContent>
+          </Select>
+          <Badge variant="outline" className="badge" data-testid="storage-badge">{storageMode === 'sqlite' ? '💾 SQLite' : '⚡ Memory'}</Badge>
+          <Separator style={{height:24, marginLeft:8, marginRight:8}} orientation="vertical"/>
           <div className="row" style={{gap:10}}>
             <div className="row" style={{gap:6, alignItems:'center'}}>
               <Switch checked={wakeOn} onCheckedChange={setWakeOn} data-testid="wake-toggle"/>
-              <span className="small">Wake: "hey guardian"</span>
+              <span className="small">Wake: "hey axion"</span>
             </div>
             <Button className="button" onClick={pushToTalk} data-testid="push-to-talk-button" aria-label="Push to talk">{listening ? <MicOff size={16} style={{marginRight:6}}/> : <Mic size={16} style={{marginRight:6}}/>}PTT</Button>
             <Button className="button ghost" data-testid="change-root-button" onClick={()=> setShowRootModal(true)}><FolderOpen size={16} style={{marginRight:6}}/>Change root</Button>
